@@ -7,21 +7,23 @@
 // @lc code=start
 
 
-bool containsDuplicate(int* nums, int numsSize){
+int cmp(const void* a,const void* b) {
+    return *(int*)a - *(int*)b;
+}
 
-    for(size_t i=0;i<numsSize;i++)
-    {
-        for(size_t j=i+1;j<numsSize;j++)
-        {
-            if(nums[i]==nums[j])
-            {
-                return true;
-                break;
-            }
+bool containsDuplicate(int* nums, int numsSize){
+    if(numsSize < 2) {
+        return false;
+    }
+    qsort(nums,numsSize,sizeof(int),cmp);
+    for(int i = 0;i < numsSize - 1;i++) {
+        if(nums[i] == nums[i+1]) {
+            return true;
         }
     }
     return false;
 }
+
 
 
 // @lc code=end
