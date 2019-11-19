@@ -13,9 +13,33 @@
  * };
  */
 
-
+typedef struct ListNode ListNode;
 struct ListNode* removeElements(struct ListNode* head, int val){
-
+        ListNode* cur = head;
+        ListNode* newhead = (ListNode*)malloc(sizeof(ListNode));
+        newhead->next = NULL;
+        ListNode* newtail = newhead;
+        while(cur)
+        {
+           
+            ListNode* next = cur->next;
+            if(cur->val == val)
+            {
+                free(cur);
+                cur = next;
+            }
+            else
+            {
+                newtail->next = cur;
+                newtail = cur;
+                newtail->next=NULL;
+                cur = next;
+                
+            }
+        }
+        ListNode* list = newhead->next;
+        free(newhead);
+        return list; 
 }
 
 
