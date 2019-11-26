@@ -8,31 +8,17 @@
 
 
 bool canConstruct(char * ransomNote, char * magazine){
-    assert(ransomNote);
-    assert(magazine);
-    char* src=ransomNote;
-    char* sub=magazine;
-    while(*sub)
+    for(int i = 0; i < strlen(ransomNote); i++)
     {
-        char* start=src;
-        char* end=sub;
-        while(*src&&*sub==*src&&*src!=' ')
-        {
-            src++;
-            sub++;
-        }
-        if(*src=='\0')
-        {
-            return true;
-        }
-        else
-        {
-            src=start+1;
-            sub=end+1;
-        }
+        char* src;
+        if(src = strchr(magazine,ransomNote[i]))
+        *src = 'A';
+    else
+        return false;
     }
-    return false;
+        return true;
 }
+
 
 
 // @lc code=end
