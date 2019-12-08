@@ -8,26 +8,21 @@
 
 
 char * convertToTitle(int n){
-    char* string=0;
-    --n;
-    while(n>=0)
-    {
-        string=(n%26)+'A';
-        n=n/26;
-        --n;
+    int len = 0, tmp = n;
+    while (tmp){
+        len++;
+        tmp = (tmp - 1) / 26;
     }
-    reverse(string,0,strlen(string));
-    return string;
-}
-void reverse(char* string,int left,int right)
-{
-    while(left<right)
-    {
-        char* tmp=string[left];
-        string[left++]=string[right];
-        string[right--]=tmp;
+    char *res = (char*)malloc(len + 1);
+    tmp = n;
+    res[len] = 0;
+    while (len--){
+        res[len] = (tmp - 1) % 26 + 'A';
+        tmp = (tmp - 1) / 26;
     }
+    return res;
 }
+
 
 
 // @lc code=end
