@@ -11,7 +11,7 @@
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* getRow(int rowIndex, int* returnSize){
-    int* row = malc((rowIndex+1)*sizeof(int));
+    int* row = malloc((rowIndex+1)*sizeof(int));
     *returnSize = rowIndex+1;
 
 

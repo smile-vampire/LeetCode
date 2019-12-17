@@ -7,21 +7,23 @@
 // @lc code=start
 
 //遇到空格将len置为0；即空格后面一个置为1；
-int lengthOfLastWord(char * s){
-    int len=0;
-    while(*s!='\0')
-    {
-        if(s[-1]==' ' && s[0]!=' ')
-        {
-            len=1;
-        }
-        else if(*s!=' ')
-        {
-            len++;
+int lengthOfLastWord(char * str){
+    char *s = str;
+
+    int lastL  = 0;
+    int length = 0;
+
+    while(*s) {
+        if (*s == ' ') {
+            lastL  = length? length:lastL;
+            length = 0;
+        } else {
+            length ++;
         }
         s++;
     }
-    return len;
+    
+    return length? length: lastL; 
 }
 
 
